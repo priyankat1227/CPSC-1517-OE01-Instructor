@@ -1,0 +1,34 @@
+﻿@page "{territoryID?}"
+@model ExampleWebApp.Pages.Samples.ReceivingPageModel
+@{
+	ViewData["Title"] = "Receiving passed data";
+}
+
+<h1>Received Passed Data</h1>
+
+<p>The value passed in was: @Model.territoryID</p>
+
+<form method="post">
+	<label>
+		Territory ID: <input disabled="true" type="text" asp-for="territoryID"/>
+	</label>
+	<label>
+		Territory Description: <input type="text" asp-for="territoryDescription"/>
+	</label>
+	<label>
+		Region ID: <select>
+					@foreach(var region in Model.regionsList)
+					{
+						if(region.RegionID == Model.regionID)
+						{
+							<option value="@region.RegionID" selected>@region.RegionDescription</option>
+						}
+						else
+						{
+							<option value="@region.RegionID">@region.RegionDescription</option>
+						}
+					}
+					</select>
+	</label>
+	<button type="submit" asp-page-handler="Update">Save</button>
+</form>

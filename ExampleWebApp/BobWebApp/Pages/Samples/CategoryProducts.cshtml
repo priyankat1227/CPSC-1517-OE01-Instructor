@@ -1,0 +1,89 @@
+﻿@page
+@model ExampleWebApp.Pages.Samples.CategoryProductsModel
+@{
+	ViewData["Title"] = "Category Products";
+}
+
+<h1>Category Products: Select a Product for Maintenance</h1>
+
+<p>@Model.Feedback</p>
+
+<form method="post">
+	<label>
+		Select a Category:
+		<select asp-for="searchCatagoryID">
+            <option value="0">select ...</option>
+            @foreach (var cat in Model.CategoryList)
+            {
+                <option value="@cat.CategoryID" selected=@(cat.CategoryID == Model.searchCatagoryID )>
+                    @cat.CategoryName
+                </option>
+            }
+        </select>
+	</label>
+    <br/>
+    @*restrict the display of the table to when there is data to view*@
+    @if (Model.ProductInfo != null)
+    {
+        if (Model.ProductInfo.Count == 0)
+        {
+            <p style="color:blueviolet; font-weight:bold; font-size:large;">
+                There are no products matching your search request.
+            </p>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    @*used for column titles*@
+                    <tr>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Supplier</th>
+                        <th>Unit Size</th>
+                        <th>Disc</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach (var item in Model.ProductInfo)
+                    {
+                        
+                        <tr>
+                            <td>
+                                <a href="/Samples/ProductCRUD/@item.ProductID">
+                                    Edit
+                                </a>
+                            </td>
+                            <td>@item.ProductName</td>
+                            <td><select disabled="true">
+                                    @foreach (var supplier in Model.SupplierList)
+                                    {
+                                        if (supplier.SupplierID == item.SupplierID)
+                                        {
+                                            <option value="@supplier.SupplierID" selected>@supplier.CompanyName</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@supplier.SupplierID">@supplier.CompanyName</option>
+                                        }
+                                    }
+                                </select> 
+                            </td>
+                            <td>@item.QuantityPerUnit</td>
+                            <td>
+                                <input type="checkbox" checked="@item.Discontinued">
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                
+                </tfoot>
+            </table>
+        }
+    }
+    <button type="submit" asp-page-handler="Fetch">Fetch Products</button>&nbsp;&nbsp;
+    <button type="submit" asp-page-handler="Clear" formnovalidate>Clear</button>&nbsp;&nbsp;
+    <button type="submit" asp-page-handler="New" formnovalidate>New Product</button>
+</form>

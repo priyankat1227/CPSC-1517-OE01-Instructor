@@ -1,7 +1,7 @@
 ﻿@page 
-@model ExampleWebApp.Pages.Samples.PartialFilterSearchModel
+@model ExampleWebApp.Pages.Samples.QueryModel
 @{
-	ViewData["Title"] = "Partial String Table Queries";
+	ViewData["Title"] = "Table Queries";
 }
 
 <h1>Partial String Query Resulting in a Table Display</h1>
@@ -60,7 +60,19 @@
 					@foreach(var territory in Model.TerritoryResults)
 					{
 						<tr>
-							<td>@territory.TerritoryID</td>
+							<td>
+								@*
+									Will send the Territory ID to another page
+									using the anchor tag and we MUST reference a page in 
+									our pages folder
+									We attach the value to the page reference in the anchor tag
+
+								*@
+								<a href="/Samples/ReceivingPage/@territory.TerritoryID">
+									Edit Territory	
+								</a>
+								
+							</td>
 							<td>@territory.TerritoryDescription</td>
 							<td><select disabled="true">
 								@foreach(var region in Model.RegionsList)
@@ -95,7 +107,7 @@
 										else
 										{
 											<a title="Page @pageRef.Page"
-												asp-page="/Samples/PartialFilterSearch"
+												asp-page="/Samples/Query"
 												asp-route-currentPage="@pageRef.Page"
 												asp-route-partialSearchText="@Model.partialSearchText"
 												asp-route-searchRegionID="@Model.searchRegionID">

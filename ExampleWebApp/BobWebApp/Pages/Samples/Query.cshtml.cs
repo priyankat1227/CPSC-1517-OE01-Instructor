@@ -9,14 +9,14 @@ using WebApp.Helpers;
 
 namespace ExampleWebApp.Pages.Samples
 {
-    public class PartialFilterSearchModel : PageModel
+    public class QueryModel : PageModel
     {
         #region Private services fields and class constructor
-        private readonly ILogger<PartialFilterSearchModel> _logger;
+        private readonly ILogger<QueryModel> _logger;
         private readonly TerritoryServices _territoryServices;
         private readonly RegionServices _regionServices;
 
-        public PartialFilterSearchModel(ILogger<PartialFilterSearchModel> logger, TerritoryServices territoryServices, RegionServices regionServices)
+        public QueryModel(ILogger<QueryModel> logger, TerritoryServices territoryServices, RegionServices regionServices)
         {
             _logger = logger;
             _territoryServices = territoryServices;
