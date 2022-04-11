@@ -29,7 +29,7 @@ namespace ExampleWebApp.Pages.Samples
 
         public List<Territory> TerritoryResults { get; set; } = new List<Territory>();
 
-        public List<Region> RegionsList { get; set; } = new List<Region>();
+        public List<Regionn> RegionsList { get; set; } = new List<Regionn>();
 
         [BindProperty(SupportsGet = true)]
         public int searchRegionID { get; set; }

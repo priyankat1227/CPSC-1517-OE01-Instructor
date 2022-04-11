@@ -35,7 +35,7 @@ namespace ExampleWebApp.Pages.Samples
 
         public List<Territory> TerritoryResults { get; set; } = new List<Territory>();
 
-        public List<Region> RegionsList { get; set;} = new List<Region>();
+        public List<Regionn> RegionsList { get; set;} = new List<Regionn>();
 
         #region Paginator
         //set the desired page size

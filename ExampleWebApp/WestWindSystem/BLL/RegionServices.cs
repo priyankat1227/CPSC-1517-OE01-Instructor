@@ -25,9 +25,9 @@ namespace WestWindSystem.BLL
 
         #region Queries
 
-        public Region Region_GetById(int regionID)
+        public Regionn Region_GetById(int regionID)
         {
-            Region info = _context.Regions
+            Regionn info = _context.Regions
                             .Where(row => row.RegionID == regionID)
                             .FirstOrDefault();
 
@@ -40,9 +40,9 @@ namespace WestWindSystem.BLL
             return info;
         }
 
-        public List<Region> Region_List()
+        public List<Regionn> Region_List()
         {
-            IEnumerable<Region> info = _context.Regions.OrderBy(row => row.RegionDescription);
+            IEnumerable<Regionn> info = _context.Regions.OrderBy(row => row.RegionDescription);
 
             return info.ToList();
         }

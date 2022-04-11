@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WestWindSystem.Entities
 {
     [Table("Regions")]
-    public class Region
+    public class Regionn
     {
         [Key]
         public int RegionID { get; set; }

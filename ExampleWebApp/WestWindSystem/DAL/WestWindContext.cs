@@ -29,7 +29,7 @@ namespace WestWindSystem.DAL
 
         //We need DBsets (set of data from the database) for each entity
         public DbSet<BuildVersion> BuildVersions { get; set; }
-        public DbSet<Region> Regions { get; set; }
+        public DbSet<Regionn> Regions { get; set; }
         public DbSet<Territory> Territories { get; set; }
         public DbSet<Order> Orders { get; set; }
 

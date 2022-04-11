@@ -30,11 +30,11 @@ namespace ExampleWebApp.Pages
         [BindProperty(SupportsGet = true)]
         public int regionID { get; set; }
 
-        public List<Region> RegionList { get; set; }
+        public List<Regionn> RegionList { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public int selectedRegionID { get; set; }
-        public Region regionInfo { get; set; }
+        public Regionn regionInfo { get; set; }
         public void OnGet()
         {
             //Check first for region id > 0
